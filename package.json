@@ -1,0 +1,31 @@
+{
+  "name": "parse-form",
+  "version": "0.1.0",
+  "description": "Parse a form into json.",
+  "main": "index.js",
+  "keywords": [
+    "form",
+    "json",
+    "parse"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DylanPiercey/parse-form.git"
+  },
+  "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DylanPiercey/parse-form/issues"
+  },
+  "homepage": "https://github.com/DylanPiercey/parse-form",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-mocha": "^2.0.1",
+    "jsdom": "^5.4.3",
+    "mocha": "^2.2.5",
+    "mocha-jsdom": "^0.5.0"
+  },
+  "dependencies": {
+    "q-set": "^0.1.6"
+  }
+}
