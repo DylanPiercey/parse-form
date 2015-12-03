@@ -19,9 +19,9 @@ var form = '\
 		<input type="radio" name="field6" value="1"/>\
 		<input type="radio" name="field6" value="2" checked/>\
 		<input type="text" name="field7" value="input text"/>\
-		<input type="checkbox" name="field8[]" checked value="1"/>\
-		<input type="checkbox" name="field8[]" value="2"/>\
-		<input type="checkbox" name="field8[]" checked value="3"/>\
+		<input type="checkbox" name="field8" checked value="1"/>\
+		<input type="checkbox" name="field8" value="2"/>\
+		<input type="checkbox" name="field8" checked value="3"/>\
 		<input id="submit" type="submit" name="field9" value="1"/>\
 		<input type="submit" name="field9" value="2"/>\
 		<input type="text" value="no name"/>\

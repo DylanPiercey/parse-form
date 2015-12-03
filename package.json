@@ -1,7 +1,7 @@
 {
   "name": "parse-form",
-  "version": "0.1.0",
-  "description": "Parse a form into json.",
+  "version": "1.0.0",
+  "description": "Utility to easily parse a form in the browser.",
   "main": "index.js",
   "keywords": [
     "form",
@@ -19,13 +19,13 @@
   },
   "homepage": "https://github.com/DylanPiercey/parse-form",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-mocha": "^2.0.1",
-    "jsdom": "^5.4.3",
-    "mocha": "^2.2.5",
-    "mocha-jsdom": "^0.5.0"
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "jsdom": "^7.1.1",
+    "mocha": "^2.3.4",
+    "mocha-jsdom": "^1.0.0"
   },
   "dependencies": {
-    "q-set": "^0.1.6"
+    "q-set": "^1.0.1"
   }
 }
