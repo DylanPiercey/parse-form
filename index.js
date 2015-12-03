@@ -1,23 +1,35 @@
 "use strict";
 
-var set       = require("q-set");
+var qset      = require("q-set");
 var validTags = {
 	INPUT: true,
 	TEXTAREA: true,
 	SELECT: true,
 	BUTTON: true
 };
+
+/**
+ * Like qset but doesn't resolve nested params such as a[b][c].
+ */
+function fset (obj, key, val) {
+	obj[key] = key in obj
+		? [].concat(obj[key], val)
+		: val;
+	return obj;
+}
+
 /*
  * Serialize a html form as JS object.
  *
  * @param {<Form/>} form
  * @returns { Array<Array> }
  */
-module.exports = function FormJSON (form) {
+module.exports = function FormJSON (form, flat) {
 	if (!form || form.nodeName !== "FORM") {
 		throw new Error("Can only parse form elements.");
 	}
 
+	var set         = flat ? fset : qset;
 	var isMultiPart = form.enctype === "multipart/form-data";
 	var elements    = form.elements;
 	var body        = {};

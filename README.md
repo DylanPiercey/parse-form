@@ -31,6 +31,12 @@ parse(form);
  */
 ```
 
+# API
+
+**parse(<Form>, flat: Boolean)**
+ * Parses a form into a javascript object.
+ * If flat is true then nested keys such as a[b][c] won't be resolved.
+
 ### Contributions
 
 * Use gulp to run tests.
