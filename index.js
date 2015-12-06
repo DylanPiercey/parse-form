@@ -1,6 +1,7 @@
 "use strict";
 
 var qset      = require("q-set");
+var temp      = [];
 var validTags = {
 	INPUT: true,
 	TEXTAREA: true,
@@ -13,7 +14,7 @@ var validTags = {
  */
 function fset (obj, key, val) {
 	obj[key] = key in obj
-		? [].concat(obj[key], val)
+		? temp.concat(obj[key], val)
 		: val;
 	return obj;
 }
