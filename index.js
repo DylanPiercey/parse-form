@@ -63,7 +63,12 @@ module.exports = function FormJSON (form, flat) {
 				set(body, name, selected);
 				break;
 			case "file":
-				if (isMultiPart && element.files) set(files, name, [].slice.call(element.files));
+				var fileList = element.files;
+				if (isMultiPart && fileList) {
+					for (var _i = 0, _len = fileList.length; _i < _len; _i++) {
+						set(files, name, fileList[_i]);
+					}
+				}
 				break;
 			default:
 				set(body, name, element.value);
