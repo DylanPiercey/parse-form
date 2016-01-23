@@ -1,6 +1,7 @@
 "use strict";
 
 var qset      = require("q-set");
+var fset      = qset.flat;
 var temp      = [];
 var validTags = {
 	INPUT: true,
@@ -8,16 +9,6 @@ var validTags = {
 	SELECT: true,
 	BUTTON: true
 };
-
-/**
- * Like qset but doesn't resolve nested params such as a[b][c].
- */
-function fset (obj, key, val) {
-	obj[key] = key in obj
-		? temp.concat(obj[key], val)
-		: val;
-	return obj;
-}
 
 /*
  * Serialize a html form as JS object.
