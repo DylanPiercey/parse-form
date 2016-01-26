@@ -1,6 +1,6 @@
 {
   "name": "parse-form",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Utility to easily parse a form in the browser.",
   "main": "index.js",
   "keywords": [
@@ -26,6 +26,6 @@
     "mocha-jsdom": "^1.0.0"
   },
   "dependencies": {
-    "q-set": "^1.4.0"
+    "q-set": "^1.4.1"
   }
 }
