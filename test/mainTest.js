@@ -29,7 +29,7 @@ var form = '\
 	</form>';
 
 describe(details.name, function () {
-	require("mocha-jsdom")();
+	require("jsdom-global")();
 
 	it("should parse all inputs on a form", function () {
 		document.body.innerHTML = form;

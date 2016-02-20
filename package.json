@@ -1,6 +1,6 @@
 {
   "name": "parse-form",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Utility to easily parse a form in the browser.",
   "main": "index.js",
   "keywords": [
@@ -19,13 +19,13 @@
   },
   "homepage": "https://github.com/DylanPiercey/parse-form",
   "devDependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
-    "jsdom": "^7.2.2",
-    "mocha": "^2.3.4",
-    "mocha-jsdom": "^1.0.0"
+    "jsdom": "^8.0.4",
+    "jsdom-global": "^1.6.1",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
-    "q-set": "^1.4.1"
+    "q-set": "^1.4.3"
   }
 }
