@@ -1,31 +1,45 @@
 {
   "name": "parse-form",
-  "version": "2.0.3",
   "description": "Utility to easily parse a form in the browser.",
-  "main": "index.js",
+  "version": "2.1.0",
+  "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/DylanPiercey/parse-form/issues"
+  },
+  "dependencies": {
+    "q-set": "^1.4.4"
+  },
+  "devDependencies": {
+    "jsdom": "^9.8.3",
+    "jsdom-global": "^2.1.0",
+    "mocha": "^3.2.0",
+    "snazzy": "^5.0.0",
+    "standard": "^8.6.0"
+  },
+  "homepage": "https://github.com/DylanPiercey/parse-form",
   "keywords": [
     "form",
     "json",
     "parse"
   ],
+  "license": "MIT",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DylanPiercey/parse-form.git"
   },
-  "author": "Dylan Piercey <pierceydylan@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DylanPiercey/parse-form/issues"
+  "scripts": {
+    "lint": "standard --verbose | snazzy",
+    "test": "npm run lint && mocha -r jsdom-global/register ./test/**/*.test.js"
   },
-  "homepage": "https://github.com/DylanPiercey/parse-form",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
-    "jsdom": "^8.0.4",
-    "jsdom-global": "^1.6.1",
-    "mocha": "^2.4.5"
-  },
-  "dependencies": {
-    "q-set": "^1.4.3"
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
   }
 }
