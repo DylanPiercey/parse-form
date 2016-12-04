@@ -1,6 +1,5 @@
 'use strict'
 
-var _clickTarget = null
 var qset = require('q-set')
 var fset = qset.flat
 var validTags = {
@@ -13,6 +12,7 @@ var validTags = {
 /**
  * Tracks which button submitted a form last.
  */
+var _clickTarget = null
 window.addEventListener('click', function patchActiveElement (e) {
   var el = e.target
   // Find an <button> element that may have been clicked.
@@ -25,8 +25,11 @@ window.addEventListener('click', function patchActiveElement (e) {
  * Patch for document.activeElement for safari.
  */
 function getActiveElement () {
-  if (document.activeElement === document.body) return _clickTarget
-  return document.activeElement
+  var el = document.activeElement === document.body
+    ? _clickTarget
+    : document.activeElement
+  _clickTarget = null
+  return el
 }
 
 /*
