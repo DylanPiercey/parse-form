@@ -14,6 +14,14 @@ var validTags = {
  */
 var _clickTarget = null
 window.addEventListener('click', function patchActiveElement (e) {
+  // Ignore canceled events, modified clicks, and right clicks.
+  if (
+    e.defaultPrevented ||
+    e.metaKey ||
+    e.ctrlKey ||
+    e.shiftKey ||
+    e.button !== 0
+    ) return
   var el = e.target
   // Find an <button> element that may have been clicked.
   while (el != null && (el.nodeName !== 'BUTTON' || el.type !== 'submit')) el = el.parentNode
