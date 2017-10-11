@@ -1,5 +1,6 @@
-const assert = require('assert')
-const parseForm = require('../index.js')
+import * as assert from "assert";
+import "mocha";
+import { parse } from "../dist";
 const form = `
   <form action="" id="form">
     <textarea name="field1">text-area text</textarea>
@@ -25,25 +26,24 @@ const form = `
     <input type="text" value="no name"/>
     <input type="text" name="invalid" value="disabled" disabled/>
   </form>
-`
+`;
 
-describe('Parse Form', () => {
-  it('should parse all inputs on a form', () => {
-    document.body.innerHTML = form
-    document.getElementById('submit').focus()
-
+describe("Parse Form", () => {
+  it("should parse all inputs on a form", () => {
+    document.body.innerHTML = form;
+    document.getElementById("submit").focus();
     assert.deepEqual(
-      parseForm(document.getElementById('form')).body,
+      parse(document.getElementById("form") as HTMLFormElement).body,
       {
-        field1: 'text-area text',
-        field2: '2',
-        field3: ['3'],
-        field5: 'true',
-        field6: '2',
-        field7: 'input text',
-        field8: ['1', '3'],
-        field9: '1'
-      }
-    )
-  })
-})
+        field1: "text-area text",
+        field2: "2",
+        field3: ["3"],
+        field5: "true",
+        field6: "2",
+        field7: "input text",
+        field8: ["1", "3"],
+        field9: "1",
+      },
+    );
+  });
+});

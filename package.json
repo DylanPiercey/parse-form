@@ -7,15 +7,21 @@
     "url": "https://github.com/DylanPiercey/parse-form/issues"
   },
   "dependencies": {
-    "q-set": "^1.4.4"
+    "q-set": "^2.0.2"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.34",
     "jsdom": "^9.8.3",
     "jsdom-global": "^2.1.0",
-    "mocha": "^3.2.0",
-    "snazzy": "^5.0.0",
-    "standard": "^8.6.0"
+    "mocha": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
   },
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/DylanPiercey/parse-form",
   "keywords": [
     "form",
@@ -23,23 +29,16 @@
     "parse"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DylanPiercey/parse-form.git"
   },
   "scripts": {
-    "lint": "standard --verbose | snazzy",
-    "test": "npm run lint && mocha -r jsdom-global/register ./test/**/*.test.js"
+    "build": "npm run lint && tsc",
+    "lint": "tslint -t codeFrame -c tslint.json '{src,test}/**/*.ts'",
+    "prepublish": "npm test",
+    "test": "npm run build && mocha -r ts-node/register -r jsdom-global/register ./test/**/*.test.ts"
   },
-  "standard": {
-    "globals": [
-      "describe",
-      "it",
-      "before",
-      "beforeEach",
-      "after",
-      "afterEach"
-    ]
-  }
+  "types": "dist/index.d.ts"
 }
