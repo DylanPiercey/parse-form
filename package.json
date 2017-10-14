@@ -48,12 +48,13 @@
     "url": "https://github.com/DylanPiercey/header-field"
   },
   "scripts": {
+    "build": "tsc",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "format-all": "find ./{src,test}/*.ts | xargs prettier --write",
+    "format-all": "find ./{src,test}/**/*.ts | xargs prettier --write",
     "mocha": "mocha -r ts-node/register -r jsdom-global/register ./test/**/*.test.ts",
-    "precommit": "lint-staged && npm test",
+    "precommit": "lint-staged && npm test && npm run build",
     "test": "nyc --extension=.ts --include=src/**/*.ts --reporter=lcov --reporter=text-summary npm run mocha",
-    "test-ci": "nyc --extension=.ts --include=src/**/*.ts --reporter=lcovonly --reporter=text-summary npm run mocha"
+    "test-ci": "nyc --extension=.ts --include=src/**/*.ts --reporter=lcovonly --reporter=text npm run mocha"
   },
   "types": "dist/index.d.ts"
 }
