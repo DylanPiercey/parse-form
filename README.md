@@ -72,7 +72,7 @@ parse(form);
 
 # API
 
-`parse(<Form>, shallow: Boolean)`
+`parse(form: HTMLFormElement, shallow: boolean): { body: object, files: object }`
  * Parses a form into a javascript object.
  * If `shallow` is true then nested keys such as a[b][c] won't be expanded.
 
