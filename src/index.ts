@@ -3,7 +3,7 @@ const validTags = {
   BUTTON: true,
   INPUT: true,
   SELECT: true,
-  TEXTAREA: true,
+  TEXTAREA: true
 };
 
 /**
@@ -17,7 +17,9 @@ export function parse(form: HTMLFormElement, shallow?: boolean) {
   const { enctype, elements } = form;
   const set = shallow ? setShallow : setDeep;
   const isMultiPart = enctype === "multipart/form-data";
-  const body: {[x: string]: string|string[]} = {};
+  const body: { [x: string]: string | string[] } = {};
+  /* istanbul ignore next */
+
   const files = isMultiPart ? {} : undefined;
 
   for (const el of elements as any) {
@@ -57,6 +59,7 @@ export function parse(form: HTMLFormElement, shallow?: boolean) {
         set(body, name, selected);
         break;
       case "file":
+        /* istanbul ignore next */
         if (isMultiPart && el.files) {
           for (const file of el.files) {
             set(files, name, file);
@@ -73,8 +76,10 @@ export function parse(form: HTMLFormElement, shallow?: boolean) {
 
 /**
  * Tracks which button submitted a form last.
+ * This is a patch for safari which does not properly focus the clicked button.
  */
 let clickTarget: HTMLButtonElement = null;
+/* istanbul ignore next */
 window.addEventListener("click", (e: MouseEvent) => {
   // Ignore canceled events, modified clicks, and right clicks.
   if (
@@ -83,7 +88,7 @@ window.addEventListener("click", (e: MouseEvent) => {
     e.ctrlKey ||
     e.shiftKey ||
     e.button !== 0
-    ) {
+  ) {
     return;
   }
 
@@ -100,10 +105,12 @@ window.addEventListener("click", (e: MouseEvent) => {
 /**
  * Patch for document.activeElement for safari.
  */
+/* istanbul ignore next */
 function getActiveElement(): Element {
-  const el = document.activeElement === document.body
-    ? clickTarget
-    : document.activeElement;
+  const el =
+    document.activeElement === document.body
+      ? clickTarget
+      : document.activeElement;
   clickTarget = null;
   return el;
 }

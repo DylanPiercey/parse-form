@@ -7,16 +7,22 @@
     "url": "https://github.com/DylanPiercey/parse-form/issues"
   },
   "dependencies": {
-    "q-set": "^2.0.2"
+    "q-set": "^2.0.4"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.34",
+    "coveralls": "^3.0.0",
+    "husky": "^0.14.3",
     "jsdom": "^9.8.3",
     "jsdom-global": "^2.1.0",
+    "lint-staged": "^4.2.3",
     "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "prettier": "^1.7.4",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
     "typescript": "^2.5.3"
   },
   "files": [
@@ -29,16 +35,25 @@
     "parse"
   ],
   "license": "MIT",
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint -t codeFrame -c tslint.json",
+      "git add"
+    ]
+  },
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DylanPiercey/parse-form.git"
+    "url": "https://github.com/DylanPiercey/header-field"
   },
   "scripts": {
-    "build": "npm run lint && tsc",
-    "lint": "tslint -t codeFrame -c tslint.json '{src,test}/**/*.ts'",
-    "prepublish": "npm test",
-    "test": "npm run build && mocha -r ts-node/register -r jsdom-global/register ./test/**/*.test.ts"
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "format-all": "find ./{src,test}/*.ts | xargs prettier --write",
+    "mocha": "mocha -r ts-node/register -r jsdom-global/register ./test/**/*.test.ts",
+    "precommit": "lint-staged && npm test",
+    "test": "nyc --extension=.ts --include=src/**/*.ts --reporter=lcov --reporter=text-summary npm run mocha",
+    "test-ci": "nyc --extension=.ts --include=src/**/*.ts --reporter=lcovonly --reporter=text-summary npm run mocha"
   },
   "types": "dist/index.d.ts"
 }
