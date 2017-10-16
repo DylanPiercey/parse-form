@@ -7,7 +7,11 @@ const validTags = {
 };
 
 /**
+ * @description
  * Serialize a html form as JS object.
+ *
+ * @param form The html form to parse.
+ * @param shallow If true, nested properties such as "a[b]" will not be resolved.
  */
 export function parse(form: HTMLFormElement, shallow?: boolean) {
   if (!form || !(form instanceof HTMLFormElement)) {
