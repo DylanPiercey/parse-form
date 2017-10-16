@@ -1,7 +1,7 @@
 {
   "name": "parse-form",
   "description": "Utility to easily parse a form in the browser.",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "bugs": {
     "url": "https://github.com/DylanPiercey/parse-form/issues"
